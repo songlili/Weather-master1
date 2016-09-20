@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg">
+
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 标题开始 -->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/tv_location"
+                    android:background="#00000000"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置城市"
+                    android:clickable="true"
+                    android:textSize="25sp"/>
+                <Button
+                    android:onClick="goToSelectContact"
+                    android:layout_width="40dp"
+                    android:layout_height="29dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/mar"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+        <!-- 标题结束 -->
+
+        <!-- 上部,今日天气概要解析开始 -->
+        <LinearLayout
+            android:id="@+id/ll_down"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_gray_bg"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="今日天气"
+                android:textSize="20sp"/><!-- 详情标题 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#88FFFFFF"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/><!-- 分割线 -->
+            <RelativeLayout
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_today_summary_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"/>
+                <ImageView
+                    android:id="@+id/tv_today_summary_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="20dp"/>
+            </RelativeLayout><!-- 今日天气整体评估 -->
+
+            <LinearLayout
+                android:id="@+id/ll_extra_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/today_extra_info_item"/><!-- 最高温度,最低温度 -->
+                <include layout="@layout/today_extra_info_item"/><!-- 相对湿度 -->
+                <include layout="@layout/today_extra_info_item"/><!-- 风力 -->
+                <include layout="@layout/today_extra_info_item"/><!-- 风向 -->
+            </LinearLayout>
+        </LinearLayout>
+        <!-- 上部,今日天气概要解析结束 -->
+
+
+        <!-- 下部,小时天气信息开始 -->
+        <LinearLayout
+            android:id="@+id/ll_up"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_gray_bg"
+
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未来天气"
+                android:textSize="20sp"/><!-- 实时天气标题 -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#88FFFFFF"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/><!-- 分割线 -->
+
+            <android.support.v4.view.ViewPager
+                android:layout_marginTop="10dp"
+                android:id="@+id/vp_future_weather"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:id="@+id/ll_dot_list"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_remarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="right"/><!-- 天气出处及时间标注 -->
+        </LinearLayout>
+        <!-- 下部,未来天气天气信息结束 -->
+
+    </LinearLayout>
+
+
+
+    <!-- 遮罩,用于网络加载-->
+    <RelativeLayout
+        android:id="@+id/rl_marsk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000">
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>
